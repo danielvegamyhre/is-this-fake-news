@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<title>Home</title>
+	<link rel="stylesheet" type="text/css" href="../static/style.css">
+</head>
+<body>
+	<header>
+		<div class="container">
+		<div id="brandname">
+            Fake News Detector
+        </div>
+        <h2>Powered by NLP and ML black magic!</h2>
+	</div>
+	</header>
+	<div class="container">
+		<form action="{{url_for('predict')}}" method="POST">
+        <p>Copy/Paste the Article Title Here</p>
+        <label>
+            <textarea name="title" rows="1" cols="40"></textarea>
+        </label>
+        <br/>
+        
+        <p>Copy/Paste the Article Text Here</p>
+            <label>
+                <textarea name="text" rows="10" cols="40"></textarea>
+            </label>
+            <br/>
+		<input type="submit" value="predict">
+	</form>
+	</div>
+</body>
+</html>
