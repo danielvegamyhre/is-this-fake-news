@@ -9,11 +9,14 @@ from nltk.tokenize import sent_tokenize, word_tokenize
 from sklearn.feature_extraction.text import CountVectorizer
 from flask import Flask, render_template, request
 
+# import MLP module definition
+from models import MLP
 
+# load saved model parameters and vectorizers
+model = pickle.load(open('web-app/data/model.pkl', 'rb'))
+title_vectorizer = pickle.load(open('web-app/data/title_vectorizer.pkl','rb'))
+text_vectorizer = pickle.load(open('web-app/data/text_vectorizer.pkl','rb'))
 
-MODEL_PATH = 'data/model.pkl'
-with open(MODEL_PATH, 'rb') as fp:
-    model = pickle.load(fp)
 
 def preprocess(df):
     lemmatizer = WordNetLemmatizer()
@@ -42,34 +45,38 @@ def preprocess(df):
         title_processed.append(' '.join(tokens))
         
     # vectorize
-    text_vectorizer = CountVectorizer(stop_words='english', max_features=4000)
-    title_vectorizer = CountVectorizer(stop_words='english', max_features=1000)
-    text_matrix = text_vectorizer.fit_transform(text_processed).toarray()
-    title_matrix = title_vectorizer.fit_transform(title_processed).toarray()
-    
-    # store label then drop old text columns and label
-    y = np.array(df.label)
-    df.drop(['title','text','label'], inplace=True, axis=1)
+    text_matrix = text_vectorizer.transform(text_processed).toarray()
+    title_matrix = title_vectorizer.transform(title_processed).toarray()
     
     # return np matrix
-    X = np.concatenate([np.array(df), title_matrix, text_matrix], axis=1)
-    return X, y
+    X = np.concatenate([title_matrix, text_matrix], axis=1)
+    return X
 
 app = Flask(__name__)
 
 @app.route('/')
 def home():
-    pass
+    return render_template('home.html')
 
 @app.route('/predict', methods=['POST'])
 def predict():
     title = request.form['title']
     text = request.form['text']
     d = {'title': [title], 'text': [text]}
-    df = pd.DataFrame(data=d)
-    X = preprocess(df)
-    y_pred = model(X)
+
+    # create dataframe from user input
+    X_df = pd.DataFrame(data=d)
+
+    # preprocess df and return np array
+    X_np = preprocess(X_df)
+
+    # convert to tensor
+    X_tensor = torch.Tensor(X_np)
+
+    # predict
+    y_pred = model(X_tensor)
     y_pred_max = torch.max(y_pred,1)[1]
+    print(y_pred, y_pred_max)
     if y_pred_max == 0:
         my_prediction = "Real news!"
     else:
