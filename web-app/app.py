@@ -19,6 +19,17 @@ text_vectorizer = pickle.load(open('web-app/data/text_vectorizer.pkl','rb'))
 
 
 def preprocess(df):
+    """
+    Preprocess user input in the same way we preprocessed the training data.
+
+    1. Remove non-alphabetic characters, convert to lowercase
+    2. Tokenize (word_tokenizer from nltk)
+    3. Lemmatize (WordNetLemmatizer)
+    4. Vectorize (CountVectorizer)
+
+    Use the same CountVectorizers from training in order to extract
+    the same features and have the same output dimensions.
+    """
     lemmatizer = WordNetLemmatizer()
 
     text_processed = []
@@ -77,7 +88,7 @@ def predict():
     y_pred = model(X_tensor)
     y_pred_max = torch.max(y_pred,1)[1]
     print(y_pred, y_pred_max)
-    if y_pred_max == 0:
+    if y_pred_max == 1:
         my_prediction = "Real news!"
     else:
         my_prediction = "Fake news!"
