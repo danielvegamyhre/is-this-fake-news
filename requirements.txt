@@ -1,4 +1,4 @@
-torch==1.8.0+cpu
+-f https://download.pytorch.org/whl/torch_stable.html
 flask
 gunicorn
 nltk
