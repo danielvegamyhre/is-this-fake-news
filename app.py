@@ -22,8 +22,8 @@ class CustomUnpickler(pickle.Unpickler):
 
 # load saved model parameters and vectorizers
 model = CustomUnpickler(open('data/model.pkl', 'rb')).load()
-title_vectorizer = pickle.load(open('data/title_vectorizer.pkl','rb'))
-text_vectorizer = pickle.load(open('data/text_vectorizer.pkl','rb'))
+title_vectorizer = CustomUnpickler(open('data/title_vectorizer.pkl','rb')).load()
+text_vectorizer = CustomUnpickler(open('data/text_vectorizer.pkl','rb')).load()
 
 
 def preprocess(df):
