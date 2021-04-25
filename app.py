@@ -13,9 +13,9 @@ from flask import Flask, render_template, request, jsonify
 from models import MLP
 
 # load saved model parameters and vectorizers
-model = pickle.load(open('web-app/data/model.pkl', 'rb'))
-title_vectorizer = pickle.load(open('web-app/data/title_vectorizer.pkl','rb'))
-text_vectorizer = pickle.load(open('web-app/data/text_vectorizer.pkl','rb'))
+model = pickle.load(open('data/model.pkl', 'rb'))
+title_vectorizer = pickle.load(open('data/title_vectorizer.pkl','rb'))
+text_vectorizer = pickle.load(open('data/text_vectorizer.pkl','rb'))
 
 
 def preprocess(df):

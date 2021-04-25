@@ -37,9 +37,15 @@
             <label>
                 <textarea placeholder="Article Text" name="text" id="article-text" rows="10" cols="100" required></textarea>
             </label>
-            <br/>
-        <button type="button" class="predict-button" value="predict" id="predict-button-id">Predict</button>
-	</form>
+            <div id="container">
+                <button type="button" class="predict-button" value="predict" id="predict-button-id">Predict</button>
+            </div>​
+            <div id="container">
+                <div class="loader" id="loader-id" style="display: none;"></div>
+            </div>
+        
+        
+    </form>
     </div>
     
     <div class="container">
@@ -49,9 +55,16 @@
 
 <script>
     document.getElementById("predict-button-id").addEventListener("click", function() {
+        
+        let loader = document.getElementById('loader-id');
         let articleTitle = document.getElementById("article-title");
         let articleText = document.getElementById("article-text");
         let resultBanner = document.getElementById("result-banner");
+
+        // start spinner and remove old prediction
+        loader.style.display = 'inline';
+        resultBanner.textContent = '';
+
         let prediction = getPrediction(articleTitle.value, articleTitle.value);
         prediction.then(function (response) {
             if (response === "real") {
@@ -67,6 +80,7 @@
             }}, function (error) {
                 console.error("Prediction API call failed with error: " + error);
             });
+        loader.style.display = 'none';
 }, false);
 </script>
 </html>
