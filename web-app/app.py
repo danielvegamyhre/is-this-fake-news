@@ -7,7 +7,7 @@ from string import punctuation
 from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import sent_tokenize, word_tokenize 
 from sklearn.feature_extraction.text import CountVectorizer
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 
 # import MLP module definition
 from models import MLP
@@ -71,10 +71,11 @@ def home():
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    title = request.form['title']
-    text = request.form['text']
+    print(request.data)
+    title = request.json['title']
+    text = request.json['text']
     d = {'title': [title], 'text': [text]}
-
+    print(d)
     # create dataframe from user input
     X_df = pd.DataFrame(data=d)
 
@@ -87,12 +88,14 @@ def predict():
     # predict
     y_pred = model(X_tensor)
     y_pred_max = torch.max(y_pred,1)[1]
-    print(y_pred, y_pred_max)
     if y_pred_max == 1:
-        my_prediction = "Real news!"
+        result = "real"
     else:
-        my_prediction = "Fake news!"
-    return render_template('result.html', prediction=my_prediction)
+        result = "fake"
+    #return render_template('result.html', prediction=my_prediction)
+    result = jsonify({"result": result})
+    print(result)
+    return result
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)

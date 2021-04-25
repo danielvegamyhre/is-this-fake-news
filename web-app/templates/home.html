@@ -1,33 +1,55 @@
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
-	<title>Home</title>
-	<link rel="stylesheet" type="text/css" href="../static/style.css">
+    <title>Home</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <script src="../static/js/predict.js" type="text/javascript"></script>
+
+	<link rel="stylesheet" type="text/css" href="../static/css/style.css">
 </head>
 <body>
 	<header>
 		<div class="container">
-		<div id="brandname">
-            Fake News Detector
+            <div id="brandname">
+                <h1 style="font-family: 'Courier New', monospace; color: white;">Fake News Detector</h1>
+            </div>
         </div>
-        <h2>Powered by NLP and ML black magic!</h2>
-	</div>
-	</header>
-	<div class="container">
-		<form action="{{url_for('predict')}}" method="POST">
-        <p>Copy/Paste the Article Title Here</p>
+    </header>
+    <br/>
+    <div class="container">
+        <span style="color: black; padding-top: 30px;">Powered by machine-learning and black magic!</span>
+    </div>
+	<div class="container" style="padding-top: 30px;">
+        		<form action="{{url_for('predict')}}" method="POST">
+        
         <label>
-            <textarea name="title" rows="1" cols="40"></textarea>
+            <textarea placeholder="Article Title" name="title" id="article-title" rows="1" cols="100" required></textarea>
         </label>
         <br/>
-        
-        <p>Copy/Paste the Article Text Here</p>
             <label>
-                <textarea name="text" rows="10" cols="40"></textarea>
+                <textarea placeholder="Article Text" name="text" id="article-text" rows="10" cols="100" required></textarea>
             </label>
             <br/>
-		<input type="submit" value="predict">
+        <button type="button" class="predict-button" value="predict" id="predict-button-id">Predict</button>
 	</form>
 	</div>
 </body>
+
+<script>
+    document.getElementById("predict-button-id").addEventListener("click", function() {
+        var articleTitle = document.getElementById("article-title");
+        var articleText = document.getElementById("article-text");
+        console.log(articleTitle.value);
+        console.log(articleText.value);
+        getPrediction(articleTitle.value, articleTitle.value);
+}, false);
+</script>
 </html>
