@@ -12,8 +12,16 @@ from flask import Flask, render_template, request, jsonify
 # import MLP module definition
 from models import MLP
 
+class CustomUnpickler(pickle.Unpickler):
+
+    def find_class(self, module, name):
+        try:
+            return super().find_class(__name__, name)
+        except AttributeError:
+            return super().find_class(module, name)
+
 # load saved model parameters and vectorizers
-model = pickle.load(open('data/model.pkl', 'rb'))
+model = CustomUnpickler(open('data/model.pkl', 'rb')).load()
 title_vectorizer = pickle.load(open('data/title_vectorizer.pkl','rb'))
 text_vectorizer = pickle.load(open('data/text_vectorizer.pkl','rb'))
 
