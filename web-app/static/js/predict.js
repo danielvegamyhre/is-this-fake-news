@@ -1,6 +1,4 @@
 const getPrediction = async (title, text) => {
-    console.log('BLAH' + title);
-    console.log("BLAH2" + text);
     const response = await fetch('/predict', {
       method: 'POST',
       body: JSON.stringify({'title': title, 'text': text}),

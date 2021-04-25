@@ -71,11 +71,9 @@ def home():
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    print(request.data)
     title = request.json['title']
     text = request.json['text']
     d = {'title': [title], 'text': [text]}
-    print(d)
     # create dataframe from user input
     X_df = pd.DataFrame(data=d)
 
@@ -88,14 +86,13 @@ def predict():
     # predict
     y_pred = model(X_tensor)
     y_pred_max = torch.max(y_pred,1)[1]
+    print(y_pred)
     if y_pred_max == 1:
         result = "real"
     else:
         result = "fake"
-    #return render_template('result.html', prediction=my_prediction)
-    result = jsonify({"result": result})
     print(result)
-    return result
+    return jsonify({"result": result})
 
 if __name__ == '__main__':
     app.run(debug=True)

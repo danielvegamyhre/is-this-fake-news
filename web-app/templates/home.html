@@ -45,11 +45,19 @@
 
 <script>
     document.getElementById("predict-button-id").addEventListener("click", function() {
-        var articleTitle = document.getElementById("article-title");
-        var articleText = document.getElementById("article-text");
-        console.log(articleTitle.value);
-        console.log(articleText.value);
-        getPrediction(articleTitle.value, articleTitle.value);
+        let articleTitle = document.getElementById("article-title");
+        let articleText = document.getElementById("article-text");
+        let prediction = getPrediction(articleTitle.value, articleTitle.value);
+        prediction.then(function (response) {
+            if (response === "real") {
+                articleTitle.style.border = "3px solid green";
+                articleText.style.border = "3px solid green";
+            } else {
+                articleTitle.style.border = "3px solid red";
+                articleText.style.border = "3px solid red";
+            }}, function (error) {
+                console.error("Prediction API call failed with error: " + error);
+            });
 }, false);
 </script>
 </html>
