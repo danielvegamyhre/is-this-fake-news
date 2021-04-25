@@ -86,13 +86,11 @@ def predict():
     # predict
     y_pred = model(X_tensor)
     y_pred_max = torch.max(y_pred,1)[1]
-    print(y_pred)
     if y_pred_max == 1:
         result = "real"
     else:
         result = "fake"
-    print(result)
     return jsonify({"result": result})
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
