@@ -28,7 +28,7 @@
         <span style="color: black; padding-top: 30px;">Powered by machine-learning and black magic!</span>
     </div>
 	<div class="container" style="padding-top: 30px;">
-        		<form action="{{url_for('predict')}}" method="POST">
+        <form action="{{url_for('predict')}}" method="POST">
         
         <label>
             <textarea placeholder="Article Title" name="title" id="article-title" rows="1" cols="100" required></textarea>
@@ -40,21 +40,30 @@
             <br/>
         <button type="button" class="predict-button" value="predict" id="predict-button-id">Predict</button>
 	</form>
-	</div>
+    </div>
+    
+    <div class="container">
+        <h2 id="result-banner"></h2>
+    </div>
 </body>
 
 <script>
     document.getElementById("predict-button-id").addEventListener("click", function() {
         let articleTitle = document.getElementById("article-title");
         let articleText = document.getElementById("article-text");
+        let resultBanner = document.getElementById("result-banner");
         let prediction = getPrediction(articleTitle.value, articleTitle.value);
         prediction.then(function (response) {
             if (response === "real") {
                 articleTitle.style.border = "3px solid green";
                 articleText.style.border = "3px solid green";
+                resultBanner.style.color = "green";
+                resultBanner.textContent = "Real news!";
             } else {
                 articleTitle.style.border = "3px solid red";
                 articleText.style.border = "3px solid red";
+                resultBanner.style.color = "red";
+                resultBanner.textContent = "Fake news!"
             }}, function (error) {
                 console.error("Prediction API call failed with error: " + error);
             });
