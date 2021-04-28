@@ -25,7 +25,7 @@
     </header>
     <br/>
     <div class="container">
-        <span style="color: black; padding-top: 30px;">Copy/paste the article title and text below to find out!</span>
+        <span style="color: black; padding-top: 30px;">Copy/paste the article below find out!</span>
         <span style="color: black; padding-top: 30px;">Powered by machine-learning and black magic :)</span>
     </div>
 	<div class="container" style="padding-top: 30px;">
@@ -69,7 +69,7 @@
             } else {
                 articleText.style.border = "3px solid red";
                 resultBanner.style.color = "red";
-                resultBanner.textContent = "Fake news!"
+                resultBanner.textContent = "Fake news!";
             }}, function (error) {
                 console.error("Prediction API call failed with error: " + error);
             });
