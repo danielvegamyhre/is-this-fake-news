@@ -21,8 +21,7 @@ class CustomUnpickler(pickle.Unpickler):
             return super().find_class(module, name)
 
 # load saved model parameters and vectorizers
-model = CustomUnpickler(open('data/model.pkl', 'rb')).load()
-title_vectorizer = CustomUnpickler(open('data/title_vectorizer.pkl','rb')).load()
+model = CustomUnpickler(open('data/multi-layer-perceptron-parameters.pkl', 'rb')).load()
 text_vectorizer = CustomUnpickler(open('data/text_vectorizer.pkl','rb')).load()
 
 
@@ -50,26 +49,12 @@ def preprocess(df):
         tokens = word_tokenize(text)
         tokens = [lemmatizer.lemmatize(x) for x in tokens]
         text_processed.append(' '.join(tokens))
- 
 
-    title_processed = []
-    for title in df.title:
-        # remove punctuation and lowercase
-        title = re.sub(r'[^a-zA-Z]', ' ', title) 
-        title = title.lower()
-        
-        # tokenize and lemmatize tokens
-        tokens = word_tokenize(title)
-        tokens = [lemmatizer.lemmatize(x) for x in tokens]
-        title_processed.append(' '.join(tokens))
-        
     # vectorize
     text_matrix = text_vectorizer.transform(text_processed).toarray()
-    title_matrix = title_vectorizer.transform(title_processed).toarray()
     
     # return np matrix
-    X = np.concatenate([title_matrix, text_matrix], axis=1)
-    return X
+    return text_matrix
 
 app = Flask(__name__)
 
@@ -79,9 +64,8 @@ def home():
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    title = request.json['title']
     text = request.json['text']
-    d = {'title': [title], 'text': [text]}
+    d = {'text': [text]}
     # create dataframe from user input
     X_df = pd.DataFrame(data=d)
 

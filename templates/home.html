@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
-    <title>Home</title>
+    <title>Fake News Detector</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
@@ -19,21 +19,17 @@
 	<header>
 		<div class="container">
             <div id="brandname">
-                <h1 style="font-family: 'Courier New', monospace; color: white;">Fake News Detector</h1>
+                <h1 style="font-family: 'Courier New', monospace; color: white;">Is This Fake News?</h1>
             </div>
         </div>
     </header>
     <br/>
     <div class="container">
-        <span style="color: black; padding-top: 30px;">Powered by machine-learning and black magic!</span>
+        <span style="color: black; padding-top: 30px;">Copy/paste the article title and text below to find out!</span>
+        <span style="color: black; padding-top: 30px;">Powered by machine-learning and black magic :)</span>
     </div>
 	<div class="container" style="padding-top: 30px;">
         <form action="{{url_for('predict')}}" method="POST">
-        
-        <label>
-            <textarea placeholder="Article Title" name="title" id="article-title" rows="1" cols="100" required></textarea>
-        </label>
-        <br/>
             <label>
                 <textarea placeholder="Article Text" name="text" id="article-text" rows="10" cols="100" required></textarea>
             </label>
@@ -57,7 +53,6 @@
     document.getElementById("predict-button-id").addEventListener("click", function() {
         
         let loader = document.getElementById('loader-id');
-        let articleTitle = document.getElementById("article-title");
         let articleText = document.getElementById("article-text");
         let resultBanner = document.getElementById("result-banner");
 
@@ -65,15 +60,13 @@
         loader.style.display = 'inline';
         resultBanner.textContent = '';
 
-        let prediction = getPrediction(articleTitle.value, articleTitle.value);
+        let prediction = getPrediction(articleText.value);
         prediction.then(function (response) {
             if (response === "real") {
-                articleTitle.style.border = "3px solid green";
                 articleText.style.border = "3px solid green";
                 resultBanner.style.color = "green";
                 resultBanner.textContent = "Real news!";
             } else {
-                articleTitle.style.border = "3px solid red";
                 articleText.style.border = "3px solid red";
                 resultBanner.style.color = "red";
                 resultBanner.textContent = "Fake news!"
