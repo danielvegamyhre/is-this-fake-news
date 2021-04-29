@@ -2,8 +2,8 @@
 ### Using machine learning to identify fake news articles
 
 <p float="left">
-  <img src="https://github.com/malwaredllc/is-this-fake-news/blob/main/static/images/real-prediction.png?raw=true.png" width="150" />
-  <img src="https://github.com/malwaredllc/is-this-fake-news/blob/main/static/images/fake-prediction.png?raw=true" width="150" />
+  <img src="https://github.com/malwaredllc/is-this-fake-news/blob/main/static/images/real-prediction.png?raw=true.png" width="300" />
+  <img src="https://github.com/malwaredllc/is-this-fake-news/blob/main/static/images/fake-prediction.png?raw=true" width="300" />
 </p>
 
 ### How it works:
@@ -12,7 +12,11 @@
 
 ## Running the Research Notebooks
 
-The research notebooks (`/research-notebooks`) were developed on Kaggle, using the [Fake and real news dataset](https://www.kaggle.com/clmentbisaillon/fake-and-real-news-dataset/code). To run these yourself:
+The research notebooks (`/research-notebooks`) were developed on Kaggle, using the [Fake and real news dataset](https://www.kaggle.com/clmentbisaillon/fake-and-real-news-dataset/code). 
+
+To run these yourself:
+
+
     - Sign into Kaggle.com
     - Visit one of the links below to view the noteboook
         - [Multi-layer perceptron](https://www.kaggle.com/danielvegamyhre/fake-vs-real-news)
