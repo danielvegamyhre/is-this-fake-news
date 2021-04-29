@@ -2,8 +2,8 @@
 ### Using machine learning to identify fake news articles
 
 <p float="left">
-  <img src="https://github.com/malwaredllc/is-this-fake-news/blob/main/static/images/real-prediction.png?raw=true.png" width="45%" />
-  <img src="https://github.com/malwaredllc/is-this-fake-news/blob/main/static/images/fake-prediction.png?raw=true" width="45%" />
+  <img src="https://github.com/malwaredllc/is-this-fake-news/blob/main/static/images/real-prediction.png?raw=true.png" width="400" />
+  <img src="https://github.com/malwaredllc/is-this-fake-news/blob/main/static/images/fake-prediction.png?raw=true" width="400" />
 </p>
 
 ### How it works:
