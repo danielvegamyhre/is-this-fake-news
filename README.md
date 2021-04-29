@@ -1,6 +1,10 @@
 # Is This Fake News? 
 ### Using machine learning to identify fake news articles
 
+![real prediction](https://github.com/malwaredllc/is-this-fake-news/blob/main/static/images/real-prediction.png?raw=true)
+
+![fake prediction](https://github.com/malwaredllc/is-this-fake-news/blob/main/static/images/fake-prediction.png?raw=true)
+
 ### How it works:
 
 [Read the paper here!](https://github.com/malwaredllc/is-this-fake-news/blob/main/Final_Report.pdf)
