@@ -1,0 +1,243 @@
+body {
+  font: 15px/1.5 Arial, Helvetica, sans-serif;
+  padding: 0;
+  background-color: #e9e9e9cf;
+}
+
+.container {
+  text-align: center;
+  margin: 10px;
+  width: 100%;
+  margin: auto;
+  overflow: hidden;
+}
+
+header {
+  background: #03a9f4;
+  border-bottom: #000000 3px solid;
+  height: 120px;
+  width: 100%;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.main-header {
+  text-align: center;
+  background-color: #03a9f4;
+  height: 100px;
+  width: 100%;
+  margin: 0;
+}
+
+.brandname {
+  text-align: center;
+  font-size: 30px;
+  color: #151414;
+  margin: 10px;
+}
+
+header h2 {
+  text-align: center;
+  color: #fff;
+}
+
+.results {
+  border-radius: 15px 50px;
+  background: #345fe4;
+  padding: 20px;
+  width: 200px;
+  height: 150px;
+}
+
+.predict-button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.predict-button:hover {
+  background-color: #3c873e;
+}
+
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 50px;
+  height: 50px;
+  -webkit-animation: spin 2s linear infinite;
+  /* Safari */
+  animation: spin 2s linear infinite;
+  position: absolute;
+  left: 50%;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+#wrapper {
+  max-width: 200px;
+  /* overflow: auto;
+  display: flex; */
+  position: absolute;
+  left: 50%;
+}
+
+/* #predict-button-id {
+   float:left;
+}
+
+#loader-id {
+	float: right;
+	vertical-align: middle;
+} */
+* {
+  box-sizing: border-box;
+}
+
+div {
+  display: block;
+  height: 100%;
+  animation: hue-rotate 10s linear infinite;
+}
+
+.button {
+  -webkit-font-smoothing: antialiased;
+  background-color: #222;
+  border: none;
+  color: #fff;
+  display: inline-block;
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  font-weight: 100;
+  text-decoration: none;
+  user-select: none;
+  letter-spacing: 1px;
+  color: white;
+  padding: 20px 40px;
+  text-transform: uppercase;
+  transition: all 0.1s ease-out;
+}
+.button:hover {
+  background-color: #90feb5;
+  color: #fff;
+}
+.button:active {
+  transform: scale(0.95);
+}
+.button--bubble {
+  position: relative;
+  z-index: 2;
+  color: white;
+  background: none;
+}
+.button--bubble:hover {
+  background: none;
+}
+.button--bubble:hover + .button--bubble__effect-container .circle {
+  background: #44fd82;
+}
+.button--bubble:hover + .button--bubble__effect-container .button {
+  background: #44fd82;
+}
+.button--bubble:active + .button--bubble__effect-container {
+  transform: scale(0.95);
+}
+.button--bubble__container {
+  position: relative;
+  display: inline-block;
+}
+.button--bubble__container .effect-button {
+  position: absolute;
+  width: 50%;
+  height: 25%;
+  top: 50%;
+  left: 25%;
+  z-index: 1;
+  transform: translateY(-50%);
+  background: #222;
+  transition: background 0.1s ease-out;
+}
+
+.button--bubble__effect-container {
+  position: absolute;
+  display: block;
+  width: 200%;
+  height: 400%;
+  top: -150%;
+  left: -50%;
+  -webkit-filter: url("#goo");
+  filter: url("#goo");
+  transition: all 0.1s ease-out;
+  pointer-events: none;
+}
+.button--bubble__effect-container .circle {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  border-radius: 15px;
+  background: #222;
+  transition: background 0.1s ease-out;
+}
+.button--bubble__effect-container .circle.top-left {
+  top: 40%;
+  left: 27%;
+}
+.button--bubble__effect-container .circle.bottom-right {
+  bottom: 40%;
+  right: 27%;
+}
+
+.goo {
+  position: absolute;
+  visibility: hidden;
+  width: 1px;
+  height: 1px;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+.button--bubble__container {
+  top: 50%;
+  margin-top: -25px;
+}
+
+@keyframes hue-rotate {
+  from {
+    -webkit-filter: hue-rotate(0);
+    -moz-filter: hue-rotate(0);
+    -ms-filter: hue-rotate(0);
+    filter: hue-rotate(0);
+  }
+  to {
+    -webkit-filter: hue-rotate(360deg);
+    -moz-filter: hue-rotate(360deg);
+    -ms-filter: hue-rotate(360deg);
+    filter: hue-rotate(360deg);
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
