@@ -24,3 +24,11 @@ To run these yourself:
 - Click the "Copy and edit" button at the top-right (which will launch a Kaggle notebook instance containing this code with the dataset ready to go)
 - Run the notebook (*Warning*: running these notebooks takes a long time due to the amount of computation required for the data pre-processing and training loop)
 
+## Running the web app locally
+
+- Install Python 3.7+
+- Install the required packages with the command: `python3 -m pip install -r requirements.txt`
+- Launch the web app with the command `python3 -m flask run`
+- Navigate to `http://127.0.0.1:5000` in your browser
+- Enjoy :)
+
