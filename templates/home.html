@@ -57,11 +57,15 @@
         let resultBanner = document.getElementById("result-banner");
 
         // start spinner and remove old prediction
+        console.log(loader);
         loader.style.display = 'inline';
+        console.log(loader.style);
         resultBanner.textContent = '';
 
         let prediction = getPrediction(articleText.value);
+        
         prediction.then(function (response) {
+            loader.style.display = 'none';
             if (response === "real") {
                 articleText.style.border = "3px solid green";
                 resultBanner.style.color = "green";
@@ -73,7 +77,6 @@
             }}, function (error) {
                 console.error("Prediction API call failed with error: " + error);
             });
-        loader.style.display = 'none';
 }, false);
 </script>
 </html>
