@@ -19,7 +19,7 @@
 	<header>
 		<div class="container">
             <div id="brandname">
-                <h1 style="font-family: 'Courier New', monospace; color: white;">Is This Fake News?</h1>
+                <h1 style="font-family: 'Monaco'; color: white;">Is This Fake News?</h1>
             </div>
         </div>
     </header>
@@ -29,19 +29,15 @@
         <span style="color: black; padding-top: 30px;">Powered by machine-learning and black magic :)</span>
     </div>
 	<div class="container" style="padding-top: 30px;">
-        <form action="{{url_for('predict')}}" method="POST">
-            <label>
-                <textarea placeholder="Article Text" name="text" id="article-text" rows="10" cols="100" required></textarea>
-            </label>
-            <div id="container">
-                <button type="button" class="predict-button" value="predict" id="predict-button-id">Predict</button>
-            </div>​
-            <div id="container">
-                <div class="loader" id="loader-id" style="display: none;"></div>
-            </div>
-        
-        
-    </form>
+        <label>
+            <textarea placeholder="Article Text" name="text" id="article-text" rows="10" cols="100" required></textarea>
+        </label>
+        <div id="container">
+            <button type="button" class="predict-button" value="predict" id="predict-button-id">Predict</button>
+        </div>​
+        <div id="container">
+            <div class="loader" id="loader-id" style="display: none;"></div>
+        </div>
     </div>
     
     <div class="container">
