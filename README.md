@@ -1,6 +1,6 @@
 # Is This Fake News? Using machine learning to identify fake news articles
 
-### Live Demo: [www.isthisfakenews.ai](http://www.isthisfakenews.ai)
+### Live Demo: [www.isthisfakenews.ai](http://www.isthisfakenews.ai) (*NOTE*: this is currently running on a free Heroku instance, so it may take a minute to boot up / for the page to load)
 
 <p float="left">
   <img src="https://github.com/malwaredllc/is-this-fake-news/blob/main/static/images/real-prediction.png?raw=true.png" width="400" />
