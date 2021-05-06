@@ -11,18 +11,12 @@
 
 [Read the paper here!](https://github.com/malwaredllc/is-this-fake-news/blob/main/Research_Paper.pdf)
 
-## Running the Research Notebooks
+## Research Notebooks
 
-The research notebooks (`/research-notebooks`) were developed on Kaggle, using the [Fake and real news dataset](https://www.kaggle.com/clmentbisaillon/fake-and-real-news-dataset/code). 
+The research notebooks (`/research-notebooks`) were developed on Kaggle, using the [Fake and real news dataset](https://www.kaggle.com/clmentbisaillon/fake-and-real-news-dataset/code). The 2 approaches explored in the research notebooks are:
 
-To run these yourself:
-
-- Sign into Kaggle.com
-- Visit one of the links below to view the noteboook
-    - [Multi-layer perceptron](https://www.kaggle.com/danielvegamyhre/fake-vs-real-news)
-    - [BERT Fine-tuning](https://www.kaggle.com/danielvegamyhre/classifying-fake-news-with-bert)
-- Click the "Copy and edit" button at the top-right (which will launch a Kaggle notebook instance containing this code with the dataset ready to go)
-- Run the notebook (*Warning*: running these notebooks takes a long time due to the amount of computation required for the data pre-processing and training loop)
+- Multi-layer Perceptron
+- BERT Fine-tuning
 
 ## Running the web app locally
 
