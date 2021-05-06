@@ -9,7 +9,7 @@
 
 ### How it works:
 
-[Read the paper here!](https://github.com/malwaredllc/is-this-fake-news/blob/main/Final_Report.pdf)
+[Read the paper here!](https://github.com/malwaredllc/is-this-fake-news/blob/main/Research_Paper.pdf)
 
 ## Running the Research Notebooks
 
